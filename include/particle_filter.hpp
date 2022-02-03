@@ -7,7 +7,7 @@
 
 #pragma once
 #include <iostream>
-#include <eigen3/Eigen/Dense>
+#include "Eigen/Dense"
 #include <stdlib.h>
 #include <time.h>
 #include <vector>
@@ -164,8 +164,8 @@ void particleFilter::example()
                 std::vector<float> xz, yz;
                 xz.push_back(xTrue(0, 0));
                 yz.push_back(xTrue(1, 0));
-                //xz.push_back(z[i](1, 0));
-                //yz.push_back(z[i](2, 0));
+                xz.push_back(z[i](1, 0));
+                yz.push_back(z[i](2, 0));
                 matplotlibcpp::plot(xz, yz, "-g");
             }
 
@@ -177,12 +177,12 @@ void particleFilter::example()
             }
             matplotlibcpp::plot(p_x, p_y, "*r");
 
-            /*for (int i=0; i<RFID.size(); ++i) {
+            for (int i=0; i<RFID.size(); ++i) {
                 std::vector<float> xz, yz;
                 xz.push_back(RFID[i](0, 0));
                 yz.push_back(RFID[i](1, 0));
                 matplotlibcpp::plot(xz, yz, "*k");
-            }*/
+            }
 
             std::vector<float> Px_hxTrue, Py_hxTrue;
             for (int i = 0; i < hxTrue.size(); i++) {
